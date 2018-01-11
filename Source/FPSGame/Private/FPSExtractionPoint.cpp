@@ -40,11 +40,11 @@ void AFPSExtractionPoint::HandleOverlap(UPrimitiveComponent* OverlappedComponent
 {	
 
 	AFPSCharacter* MyPawn = Cast<AFPSCharacter>(OtherActor);
-	if (MyPawn != nullptr)
+	if (MyPawn == nullptr)
 	{
 		return;
-	}
-	
+	}		
+
 		if (MyPawn->bIsCarryingObjective)
 		{
 
