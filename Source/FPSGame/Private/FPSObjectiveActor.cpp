@@ -19,6 +19,8 @@ AFPSObjectiveActor::AFPSObjectiveActor()
 	SphereComp->SetCollisionResponseToAllChannels(ECR_Ignore);
 	SphereComp->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
 	SphereComp->SetupAttachment(MeshComp);
+
+	SetReplicates(true);
 }
 
 // Called when the game starts or when spawned
@@ -34,6 +36,9 @@ void AFPSObjectiveActor::PlayEffects()
 	UGameplayStatics::SpawnEmitterAtLocation(this, PickupFX, GetActorLocation());
 }
 
+/*When the character overlaps the objective it will play some effect
+* @param OtherActor
+*/
 void AFPSObjectiveActor::NotifyActorBeginOverlap(AActor * OtherActor)
 {
 	Super::NotifyActorBeginOverlap(OtherActor);
@@ -41,13 +46,20 @@ void AFPSObjectiveActor::NotifyActorBeginOverlap(AActor * OtherActor)
 	/*Whenever we overlap the actor it plays effects*/
 	PlayEffects();
 
-	AFPSCharacter* MyCharacter = Cast<AFPSCharacter>(OtherActor);
-
-	if (MyCharacter)
+	if (Role == ROLE_Authority)
 	{
-		MyCharacter->bIsCarryingObjective = true;
+		/*When ever the character moves over the objectives
+		* it will move over it and destroy the object
+		* @param OtherActor
+		*/
+		AFPSCharacter* MyCharacter = Cast<AFPSCharacter>(OtherActor);
 
-		Destroy();
-	}
+		if (MyCharacter)
+		{
+			MyCharacter->bIsCarryingObjective = true;
+
+			Destroy();
+		}
+	}	
 }
 

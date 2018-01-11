@@ -3,6 +3,7 @@
 #include "FPSExtractionPoint.h"
 #include "FPSCharacter.h"
 #include "FPSGameMode.h"
+#include "FPSHUD.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/DecalComponent.h"
 #include "Components/BoxComponent.h"
@@ -58,7 +59,7 @@ void AFPSExtractionPoint::HandleOverlap(UPrimitiveComponent* OverlappedComponent
 			UGameplayStatics::PlaySound2D(this, ObjectiveMissingSound);
 		}
 
-		//UE_LOG(logTemp, Log, TEXT("Overlapped wih extraction point!"));
+		UE_LOG(LogTemp, Log, TEXT("Overlapped wih extraction point!"));
 
 	
 }

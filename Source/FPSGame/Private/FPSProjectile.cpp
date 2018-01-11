@@ -5,6 +5,7 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/SphereComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "DataReplication.h"
 
 AFPSProjectile::AFPSProjectile() 
 {
@@ -31,6 +32,9 @@ AFPSProjectile::AFPSProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
+
+	SetReplicates(true);
+	SetReplicateMovement(true);
 }
 
 
@@ -42,9 +46,12 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());		
 	}
 
-	MakeNoise(1.0f, Instigator);
+	if (Role == ROLE_Authority)
+	{
+		MakeNoise(1.0f, Instigator);
 
-	Destroy();
+		Destroy();
+	}
 
 	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplsionEffect, GetActorLocation());
 }

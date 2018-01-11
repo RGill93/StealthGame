@@ -43,8 +43,6 @@ public:
 	* for events when objects have a blocking collision, for example a player hitting a wall
 	* @note Components on both this and the other Actor must have bGeneratedOverlapEvents set to true to generate overlaps.
 	*/
-	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
-
-	
+	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;	
 	
 };

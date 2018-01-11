@@ -54,11 +54,16 @@ public:
 	UAnimSequence* FireAnimation;
 
 	/*Bool to check whether item is picked up*/
-	UPROPERTY(BlueprintReadOnly, Category = "Gameplay")
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Gameplay")
 	bool bIsCarryingObjective;
 
 protected:
-	
+	/*A function to the hande the server side of the game
+	* @param reliable is how quick it can reach the server
+	*/
+	UFUNCTION(Server, Reliable, WithValidation)
+	void ServerFire();
+
 	/** Fires a projectile. */
 	void Fire();
 
@@ -76,6 +81,8 @@ public:
 
 	/** Returns FirstPersonCameraComponent subobject **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return CameraComponent; }
+
+	virtual void Tick(float DeltaTime) override;
 
 };
 

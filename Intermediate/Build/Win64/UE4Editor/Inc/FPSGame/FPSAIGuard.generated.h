@@ -18,6 +18,14 @@ enum class EAIState : uint8;
 
 #define StealthGame_Source_FPSGame_Public_FPSAIGuard_h_24_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execOnRep_GuardState) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnRep_GuardState(); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execResetOrientation) \
 	{ \
 		P_FINISH; \
@@ -48,6 +56,14 @@ enum class EAIState : uint8;
 
 
 #define StealthGame_Source_FPSGame_Public_FPSAIGuard_h_24_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execOnRep_GuardState) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnRep_GuardState(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execResetOrientation) \
 	{ \
@@ -131,7 +147,8 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AFPSAIGuard); \
 
 
 #define StealthGame_Source_FPSGame_Public_FPSAIGuard_h_24_PRIVATE_PROPERTY_OFFSET \
-	FORCEINLINE static uint32 __PPO__PawnSensingComp() { return STRUCT_OFFSET(AFPSAIGuard, PawnSensingComp); }
+	FORCEINLINE static uint32 __PPO__PawnSensingComp() { return STRUCT_OFFSET(AFPSAIGuard, PawnSensingComp); } \
+	FORCEINLINE static uint32 __PPO__GuardState() { return STRUCT_OFFSET(AFPSAIGuard, GuardState); }
 
 
 #define StealthGame_Source_FPSGame_Public_FPSAIGuard_h_21_PROLOG \

@@ -422,16 +422,20 @@
 		<ClCompile Include="..\..\Source\FPSGame\Private\FPSCharacter.cpp" />
 		<ClCompile Include="..\..\Source\FPSGame\Private\FPSExtractionPoint.cpp" />
 		<ClCompile Include="..\..\Source\FPSGame\Private\FPSGameMode.cpp" />
+		<ClCompile Include="..\..\Source\FPSGame\Private\FPSGameState.cpp" />
 		<ClCompile Include="..\..\Source\FPSGame\Private\FPSHUD.cpp" />
 		<ClCompile Include="..\..\Source\FPSGame\Private\FPSObjectiveActor.cpp" />
+		<ClCompile Include="..\..\Source\FPSGame\Private\FPSPlayerController.cpp" />
 		<ClCompile Include="..\..\Source\FPSGame\Private\FPSProjectile.cpp" />
 		<ClInclude Include="..\..\Source\FPSGame\Public\FPSAIGuard.h" />
 		<ClInclude Include="..\..\Source\FPSGame\Public\FPSBlackHole.h" />
 		<ClInclude Include="..\..\Source\FPSGame\Public\FPSCharacter.h" />
 		<ClInclude Include="..\..\Source\FPSGame\Public\FPSExtractionPoint.h" />
 		<ClInclude Include="..\..\Source\FPSGame\Public\FPSGameMode.h" />
+		<ClInclude Include="..\..\Source\FPSGame\Public\FPSGameState.h" />
 		<ClInclude Include="..\..\Source\FPSGame\Public\FPSHUD.h" />
 		<ClInclude Include="..\..\Source\FPSGame\Public\FPSObjectiveActor.h" />
+		<ClInclude Include="..\..\Source\FPSGame\Public\FPSPlayerController.h" />
 		<ClInclude Include="..\..\Source\FPSGame\Public\FPSProjectile.h" />
 	</ItemGroup>
 	<PropertyGroup>
