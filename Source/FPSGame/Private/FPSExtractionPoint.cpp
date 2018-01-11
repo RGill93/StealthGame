@@ -60,7 +60,6 @@ void AFPSExtractionPoint::HandleOverlap(UPrimitiveComponent* OverlappedComponent
 		}
 
 		UE_LOG(LogTemp, Log, TEXT("Overlapped wih extraction point!"));
-
 	
 }
 
