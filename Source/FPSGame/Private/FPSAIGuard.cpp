@@ -92,6 +92,8 @@ void AFPSAIGuard::ResetOrientation()
 	SetActorRotation(OriginalRotation);
 
 	SetGuardState(EAIState::Idle);
+
+	OnStateChanged(GuardState);
 	
 }
 
@@ -110,11 +112,11 @@ void AFPSAIGuard::SetGuardState(EAIState NewState)
 	GuardState = NewState;
 	OnRep_GuardState();
 }
+
 // Called every frame
 void AFPSAIGuard::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);	
-
 }
 
 void AFPSAIGuard::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const

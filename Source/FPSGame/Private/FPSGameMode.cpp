@@ -28,12 +28,13 @@ void AFPSGameMode::CompleteMission(APawn* InstigatorPawn, bool bMissionSuccess)
 {
 	if (InstigatorPawn)
 	{
+		InstigatorPawn->DisableInput(nullptr);
 
 		if (SpectatingViewpointClass)
 		{
 			TArray<AActor*> ReturnedActors;
 			UGameplayStatics::GetAllActorsOfClass(this, SpectatingViewpointClass, ReturnedActors);
-
+			
 			// change viewtarget if any valid actor found
 			if (ReturnedActors.Num() > 0)
 			{
@@ -53,13 +54,13 @@ void AFPSGameMode::CompleteMission(APawn* InstigatorPawn, bool bMissionSuccess)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("SpectatingViewpointClass is nullptr, please update GameMode class with valid subclass, cannot change spectating view targets."))
 		}
+
+		OnMissionCompleted(InstigatorPawn, bMissionSuccess);
 	}
 
 	AFPSGameState* GS = GetGameState<AFPSGameState>();
 	if (GS)
 	{
 		GS->MulticastOnMissionComplete(InstigatorPawn, bMissionSuccess);
-	}
-
-	OnMissionCompleted(InstigatorPawn, bMissionSuccess);	
+	}		
 }
